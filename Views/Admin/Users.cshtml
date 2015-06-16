@@ -1,0 +1,88 @@
+﻿@using Matrimonial.Models
+@model List<Matrimonial.Models.UserProfile>
+
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_LayoutPageAdmin.cshtml";
+}
+<link href="~/css/jquery.dataTables.min.css" rel="stylesheet" />
+<link href="~/css/dataTables.bootstrap.css" rel="stylesheet" />
+
+@if (ViewBag.err == false)
+{
+    <div class='col-md-6 col-md-offset-3'><div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Ooops!</strong> Something went wrong</div></div>
+}
+else if (ViewBag.err == true)
+{
+    <div class='col-md-6 col-md-offset-3'><div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Congratulations!</strong>User Deleted</div></div>
+}
+
+@if (ViewBag.verify == false)
+{
+    <div class='col-md-6 col-md-offset-3'><div class='alert alert-dismissible alert-danger'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Ooops!</strong> Something went wrong</div></div>
+}
+else if (ViewBag.verify == true)
+{
+    <div class='col-md-6 col-md-offset-3'><div class='alert alert-dismissible alert-success'><button type='button' class='close' data-dismiss='alert'>×</button><strong>Congratulations!</strong>User Verified</div></div>
+}
+
+
+
+<table id="myTable" class="table table-responsive table-bordered">
+    <thead>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>City</th>
+            <th>Verified</th>
+            <th>Delete</th>
+            <th>Verify</th>
+        </tr>
+    </thead>
+
+    <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Password</th>
+            <th>City</th>
+            <th>Verified</th>
+            <th>Delete</th>
+            <th>Verify</th>
+
+        </tr>
+    </tfoot>
+
+    <tbody>
+        @foreach (UserProfile p in Model)
+        {
+            <tr>
+                <td>@p.UserId</td>
+                <td>@p.FirstName&nbsp;@p.LastName</td>
+                <td>@p.Email</td>
+                <td>@p.Password</td>
+                <td>@p.City</td>
+                <td>@p.isVerified</td>
+                <td class="text-center"><a href="/Admin/DeleteUser?id=@p.UserId" class="btn btn-danger"><i class="fa fa-fw fa-trash"></i></a></td>
+                <td class="text-center"><a href="/Admin/VerifyUser?id=@p.UserId" class="btn btn-success"><i class="fa fa-fw fa-check"></i></a></td>
+            </tr>
+        }
+        
+        
+        
+    </tbody>
+</table>
+
+
+<script src="~/JS/jquery-2.1.4.js"></script>
+<script src="~/JS/jquery.dataTables.min.js"></script>
+<script src="~/JS/dataTables.bootstrap.js"></script>
+<script>
+    $(document).ready(function () {
+        debugger;
+        $('#myTable').dataTable();
+    })
+</script>
