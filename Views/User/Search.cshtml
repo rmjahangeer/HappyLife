@@ -17,7 +17,7 @@
 
 
 <div class="container">
-    @{ UserProfileModel temp = (UserProfileModel) Session["user"];}
+    @{ var temp = (UserProfileModel) Session["user"];}
     @Html.Partial("_SearchPartial")
 
     <h1 id="nothing"></h1>
@@ -54,7 +54,7 @@
                                 </div>
                             </div>
                             <div class="panel-footer">
-                                @if (bool.Parse(temp.isVerified))
+                                @if (bool.Parse(temp.IsVerified))
                                 {
                                     <a class="btn btn-success" href="/User/SendRequest?userId=@temp.UserId&requestedId=@u.UserId"><i class="fa fa-fw fa-heart"></i>Express Interest</a>
                                 }
@@ -82,7 +82,6 @@
 <script>
     $(document).ready(function() {
         $('#find').click(function () {
-            debugger;
             var age = $('#age').val();
             var city = $('#city').val();
             var gender = $('#gender').val();
