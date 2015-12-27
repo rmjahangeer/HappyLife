@@ -101,7 +101,7 @@
                     <p>
                         <span><i class="fa fa-copyright"></i></span>2015&ndash;2015 Happy Life
                     </p>
-                    <p id="date_time" class="pull-right">@DateTime.Now.ToShortDateString()</p>
+                    <p id="date_time" class="pull-right">@DateTime.Now.ToString("D")</p>
 
                 </div>
             </div>
@@ -115,6 +115,15 @@
     <script src="~/JS/jquery.dataTables.min.js"></script>
     <script src="~/JS/dataTables.bootstrap.js"></script>
     <script src="~/JS/myscripts.js"></script>
+    @*<script>
+        setInterval(function() {
+            $.getJSON('@Url.Action("GetDate","Home")', function(date) {
+                $('#date_time').text(date);
+            });
+        }, 1000);
+    </script>*@
 
-</body>
+
+
+        </body>
 </html>

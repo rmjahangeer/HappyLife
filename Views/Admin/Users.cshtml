@@ -1,5 +1,5 @@
-﻿@using Matrimonial.Models
-@model List<Matrimonial.Models.UserProfile>
+﻿@using Matrimonial.ClientModels
+@model List<Matrimonial.ClientModels.UserProfileModel>
 
 @{
     ViewBag.Title = "Users";
@@ -80,7 +80,7 @@ else if (ViewBag.verify == true)
     </tfoot>
 
     <tbody>
-        @foreach (UserProfile p in Model)
+        @foreach (UserProfileModel p in Model)
         {
             <tr>
                 <td>@p.UserId</td>
@@ -88,7 +88,7 @@ else if (ViewBag.verify == true)
                 <td>@p.Email</td>
                 <td>@p.Password</td>
                 <td>@p.City</td>
-                <td>@p.isVerified</td>
+                <td>@p.IsVerified</td>
 
                 <td>
                     <div class="text-center"><a data-toggle="modal" data-target="#myModal-@p.UserId" class="btn btn-info" role="button"><i class="fa fa-fw fa-info"></i></a></div>
@@ -160,7 +160,7 @@ else if (ViewBag.verify == true)
 
                 </td>
                 <td class="text-center"><a href="/Admin/DeleteUser?id=@p.UserId" class="btn btn-danger"><i class="fa fa-fw fa-trash"></i></a></td>
-                @if (bool.Parse(p.isVerified))
+                @if (!bool.Parse(p.IsVerified))
                 {
                     <td class="text-center"><a href="/Admin/Disapprove?id=@p.UserId" class="btn btn-warning"><i class="fa fa-fw fa-warning"></i></a></td>
                 }

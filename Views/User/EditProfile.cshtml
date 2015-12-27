@@ -100,7 +100,7 @@
                                     })
                                 </div>
                                 <div class="col-sm-9">
-                                    @Html.TextBoxFor(x => x.DateOfBirthString, new { @id="UserDOB", @class = "customCalender form-control" })
+                                    @Html.TextBoxFor(x => x.UserProfile.DateOfBirth, new { @id="UserDOB", @class = "customCalender form-control" })
                                 </div>
                             </div>
                             <div class=" col-xs-12 col-sm-6">
@@ -417,10 +417,10 @@
     $(document).ready(function () {
         $('.text-box').addClass('form-control');
 
-        $('#DateOfBirth').attr('readonly', 'readonly');
+        //$('#DateOfBirth').attr('readonly', 'readonly');
         
 
-        $('#DateOfBirth').attr('style', 'cursor:pointer');
+        //$('#DateOfBirth').attr('style', 'cursor:pointer');
 
         $('#AboutUser').attr('style', 'resize:none; height:300px');
 
@@ -428,8 +428,9 @@
 
         $('#Height').val('@Model.Heights');*@
 
+        $('#UserDOB').val('@Model.UserProfile.DateOfBirth.ToString("dd-MMM-yy")');
+
         $('#Phone').keydown(function () {
-            debugger;
             isNumberKey(event);
         });
 
