@@ -1,5 +1,6 @@
-﻿@using Matrimonial.Models
-@model List<UserProfile>
+﻿@using Matrimonial.ClientModels
+@using Matrimonial.Models
+@model List<UserProfileModel>
 @{
     ViewBag.Title = "Search";
 }
@@ -16,13 +17,13 @@
 
 
 <div class="container">
-    @{ UserProfile temp = (UserProfile) Session["user"];}
+    @{ UserProfileModel temp = (UserProfileModel) Session["user"];}
     @Html.Partial("_SearchPartial")
 
     <h1 id="nothing"></h1>
     <div class="col-md-12">
         <div id="results" class="row">
-            @foreach (UserProfile u in Model)
+            @foreach (UserProfileModel u in Model)
             {
 
                 if (!u.Gender.Equals(temp.Gender))
